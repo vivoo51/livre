@@ -7,9 +7,9 @@
 public class Test {
 
 	public boolean testRoman() {
-		Livre l,l2;
+		Livre l, l2;
 		l = new Roman("dfbdg", "dgdg");
-		l2 =new Roman("gjs","kjg");
+		l2 = new Roman("gjs", "kjg");
 		System.out.println(l.toString());
 		return true;
 
@@ -29,14 +29,14 @@ public class Test {
 		Livre roman2 = new Roman("b", "qfs");
 		Livre roman3 = new Roman("c", "qfs");
 		Liste l = new Liste();
-		
+
 		l.ajouter(roman);
 		l.ajouter(roman2);
 		l.ajouter(roman3);
 		l.ajouter(livre);
 		System.out.println(l.afficheBD());
 		return l.supprime("a");
-		
+
 	}
 
 }
