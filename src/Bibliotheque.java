@@ -57,8 +57,11 @@ public class Bibliotheque {
 		listeLivre.ajouter(new Manga(titre, auteur, dessinateur));
 	}
 	
+	/**
+	 * Methode affichant la liste des BD contenues dans la Bibliotheque
+	 */
 	public void afficheBD(){
-		
+		this.listeLivre.afficheBD();
 	}
 
 }
