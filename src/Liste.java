@@ -60,7 +60,7 @@ public class Liste {
 			if (maillonCourant.getSuc().getValeur().getTitre() == titre)
 				trouve = true;
 			// Memorisation du maillon
-			
+
 			// décalage de la position courante
 			maillonCourant = maillonCourant.getSuc();
 		}
@@ -86,17 +86,50 @@ public class Liste {
 		return s.toString();
 	}
 
+	/**
+	 * Methode permettant la generation d'une chaine de caracteres contenant les
+	 * BDs de la liste
+	 * 
+	 * @return chaine a afficher
+	 */
 	public String afficheBD() {
 		int n = 0;
 		Maillon m = tete;
 		StringBuilder s = new StringBuilder();
 		while (m != null) {
-			if (m.getValeur().categorie() == "BD") {
+			if (m.getValeur() instanceof BD) {
 				n++;
 				s.append((m.getValeur().toString() + "\n"));
 			}
 			m = m.getSuc();
 		}
 		return n + "\n" + s.toString();
+	}
+
+	/**Methode permettant de rechercher les ouvrages d'un Auteur
+	 * @param auteur Nom de l'auteur
+	 * @return une Liste des ouvrages de l'auteur
+	 */
+	public Liste rechercheAuteur(String a) {
+		boolean trouve = false;
+		Maillon m = this.tete;
+		// Initialisation de la liste resultat
+		Liste res = new Liste();
+		// Si la liste à parcourir est vide
+		if (m == null)
+			return res;
+		else if (tete.getValeur().getAuteur() ==a) trouve =true;
+		// Parcours de la liste
+		while (!trouve && m.getSuc() != null) {
+			if (m.getValeur().getAuteur() == a) {
+				trouve = true;
+				res.ajouter(m.getValeur());
+			}
+
+			m = m.getSuc();
+		}
+		System.out.println(trouve);
+		return res;
+
 	}
 }

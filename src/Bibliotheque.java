@@ -56,12 +56,15 @@ public class Bibliotheque {
 	public void ajouteManga(String auteur, String dessinateur, String titre) {
 		listeLivre.ajouter(new Manga(titre, auteur, dessinateur));
 	}
-	
+
 	/**
 	 * Methode affichant la liste des BD contenues dans la Bibliotheque
 	 */
-	public void afficheBD(){
-		this.listeLivre.afficheBD();
+	public void afficheBD() {
+		System.out.println(this.listeLivre.afficheBD());
 	}
 
+	public void rechercheAuteur(String auteur) {
+		System.out.println(this.listeLivre.rechercheAuteur(auteur));
+	}
 }

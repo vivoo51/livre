@@ -6,6 +6,36 @@
  */
 public class Test {
 
+	// Generation de bibliotheques pour les test
+
+	/**
+	 * Cette méthode génère une bibliotheque vide
+	 * 
+	 * @return Une Bibliotheque vide
+	 */
+	public Bibliotheque biblioTestVide() {
+		Bibliotheque b = new Bibliotheque();
+		return b;
+	}
+
+	/**
+	 * Cette méthode génère une bibliotheque type
+	 * 
+	 * @return Une Bibliotheque vide
+	 */
+	public Bibliotheque biblioTest() {
+		Bibliotheque b = new Bibliotheque();
+		// Ajout de Romans
+		b.ajouteRoman("Hugo", "Les Miserables");
+		b.ajouteRoman("Tolkien", "Bilbo");
+		// Ajout de Comics
+		b.ajouteComics("Marvel", "Dessinateur", "Batman");
+		// Ajout de Manga
+		b.ajouteManga("Manga", "dessinateur", "titre");
+		return b;
+	}
+
+	// Methodes de test
 	public boolean testRoman() {
 		Livre l, l2;
 		l = new Roman("dfbdg", "dgdg");
@@ -37,6 +67,23 @@ public class Test {
 		System.out.println(l.afficheBD());
 		return l.supprime("a");
 
+	}
+
+	/**
+	 * Test la méthode d'affichage des BDs
+	 * 
+	 * @return
+	 */
+	public boolean testBibliothequeAfficheBD() {
+		biblioTest().afficheBD();
+		return true;
+	}
+	
+	public boolean testBibliothequeRechercheAuteur(){
+		biblioTest().rechercheAuteur("Hugo");
+		
+		return true;
+		
 	}
 
 }
