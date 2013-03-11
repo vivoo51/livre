@@ -56,5 +56,9 @@ public class Bibliotheque {
 	public void ajouteManga(String auteur, String dessinateur, String titre) {
 		listeLivre.ajouter(new Manga(titre, auteur, dessinateur));
 	}
+	
+	public void afficheBD(){
+		
+	}
 
 }
