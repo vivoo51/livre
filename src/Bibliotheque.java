@@ -44,7 +44,7 @@ public class Bibliotheque {
 	}
 
 	/**
-	 * Methode permettant l'ajout d'un Mangadans la Bibliotheque
+	 * Methode permettant l'ajout d'un Manga dans la Bibliotheque
 	 * 
 	 * @param auteur
 	 *            Auteur du manga
@@ -64,7 +64,16 @@ public class Bibliotheque {
 		System.out.println(this.listeLivre.afficheBD());
 	}
 
+	/**Methode affichant la liste des livres d'un auteur
+	 * @param auteur Nom de l'auteur recherché
+	 */
 	public void rechercheAuteur(String auteur) {
 		System.out.println(this.listeLivre.rechercheAuteur(auteur));
+	}
+	/**Methode affichant la liste des BD d'un dessinateur
+	 * @param dessinateur Nom du dessinateur recherché
+	 */
+	public void rechercheDessinateur(String dessinateur) {
+		System.out.println(this.listeLivre.rechercheDessinateur(dessinateur));
 	}
 }

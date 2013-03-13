@@ -26,6 +26,10 @@ public abstract class BD extends Livre {
 	public String getDessinateur() {
 		return dessinateur;
 	}
+	
+	public String toString(){
+		return categorie() + ";" + getId() + ";" + getTitre() + ";" + getAuteur() + ";" +dessinateur;
+	}
 
 
 }

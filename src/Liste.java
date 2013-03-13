@@ -45,32 +45,39 @@ public class Liste {
 	public boolean supprime(String titre) {
 		// Initialisation
 		boolean trouve = false;
-
+		Maillon temp = null;
 		Maillon maillonCourant = tete;
 		// Recherche
 		// test du cas particulier, suppression en tete de liste
 		if (tete.getValeur().getTitre() == titre) {
 			tete = tete.getSuc();
+			nb_element--;
 			return true;
 		}
-		// Parcours de la liste tant que le maillon suivant existe et que
+		// Parcours de la liste tant que l'on est pas à la fin de la liste et
+		// que
 		// l'element n'a pas ete trouve
+		temp = tete;
+		// décalage de la position courante
+		maillonCourant = maillonCourant.getSuc();
 		while (maillonCourant.getSuc() != null && !trouve) {
 			// Si le maillon contient le livre, trouve passe à vrai
-			if (maillonCourant.getSuc().getValeur().getTitre() == titre)
+			if (maillonCourant.getValeur().getTitre() == titre) 
 				trouve = true;
 			// Memorisation du maillon
-
+			temp = maillonCourant;
 			// décalage de la position courante
-			maillonCourant = maillonCourant.getSuc();
+			if(!trouve)maillonCourant = maillonCourant.getSuc();
 		}
-		// Suppression
-		// maillonTemp.setSuc(maillonCourant);
+
+		if (trouve) {
+			// Suppression
+			temp.setSuc(maillonCourant);
+			// MAJ du nombre d elements
+			nb_element--;
+		}
 		// On retourne vrai si l'element a été trouvé et supprimé, faux le cas
 		// contraire
-
-		// MAJ du nombre d elements
-		nb_element--;
 		return trouve;
 	}
 
@@ -106,29 +113,53 @@ public class Liste {
 		return n + "\n" + s.toString();
 	}
 
-	/**Methode permettant de rechercher les ouvrages d'un Auteur
-	 * @param auteur Nom de l'auteur
+	/**
+	 * Methode permettant de rechercher les ouvrages d'un Auteur
+	 * 
+	 * @param a
+	 *            Nom de l'auteur
 	 * @return une Liste des ouvrages de l'auteur
 	 */
 	public Liste rechercheAuteur(String a) {
-		boolean trouve = false;
+		// On se place en tete de liste
 		Maillon m = this.tete;
 		// Initialisation de la liste resultat
 		Liste res = new Liste();
-		// Si la liste à parcourir est vide
-		if (m == null)
-			return res;
-		else if (tete.getValeur().getAuteur() ==a) trouve =true;
 		// Parcours de la liste
-		while (!trouve && m.getSuc() != null) {
+		while (m != null) {
 			if (m.getValeur().getAuteur() == a) {
-				trouve = true;
 				res.ajouter(m.getValeur());
 			}
 
 			m = m.getSuc();
 		}
-		System.out.println(trouve);
+		return res;
+
+	}
+
+	/**
+	 * Methode permettant de rechercher les ouvrages d'un Dessinateur
+	 * 
+	 * @param d
+	 *            Nom du Dessinateur
+	 * @return une Liste des ouvrages du dessinateur
+	 */
+	public Liste rechercheDessinateur(String d) {
+		// On se place en tete de liste
+		Maillon m = this.tete;
+		// Initialisation de la liste resultat
+		Liste res = new Liste();
+		// Parcours de la liste
+		while (m != null) {
+			// Si l'ouvrage courant est bien une BD, on teste le dessinateur, et
+			// on ajoute dans la liste res
+			if (m.getValeur() instanceof BD
+					&& ((BD) m.getValeur()).getDessinateur() == d) {
+				res.ajouter(m.getValeur());
+			}
+
+			m = m.getSuc();
+		}
 		return res;
 
 	}
